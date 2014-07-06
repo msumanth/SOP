@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "RequestBookingDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp" type="text/javascript"></script>
+<script type="text/javascript">
+    function initialize() {
+        var mapOptions = {
+            zoom: 10,
+            center: new google.maps.LatLng(12.876069959946506, 77.65502940863371)
+        };
+        var mapDiv = document.getElementById('map-canvas');
+        var map = new google.maps.Map(mapDiv, mapOptions);
+        var contentString = '<div id="content"><h2>Banglore location</h2></div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(12.876069959946506, 77.65502940863371),
+            map: map,
+            title: 'Banglore'
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <i class="glyphicon glyphicon-wrench pull-right"></i>
+            <h4>Booking</h4>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-6">
+            <form class="form form-vertical">
+                <div class="control-group">
+                    <label>Request Id</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Request Id" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Vehicle owner name</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Vehicle owner name" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Date of birth</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Date of birth" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Address</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Address" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Mobile Number</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Mobile Number" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Email Id</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Email Id" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Car No.</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Car No." class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Vehicle model</label>
+                    <div class="controls">
+                        
+                        <select  class="form-control">
+                            <option>Model 1</option>
+                            <option>Model 2</option>
+                            <option>Model 3</option>
+                            <option>Model 4</option>
+                            <option>Model 5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Dealer Name</label>
+                    <div class="controls">
+                        <select class="form-control">
+                            <option>Dealer 1</option>
+                            <option>Dealer 2</option>
+                            <option>Dealer 3</option>
+                            <option>Dealer 4</option>
+                            <option>Dealer 5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Date of service</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Terms and Conditions" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Type of Service booking</label>
+                    <div class="controls">
+                        <select  class="form-control">
+                            <option>Service 1</option>
+                            <option>Service 2</option>
+                            <option>Service 3</option>
+                            <option>Service 4</option>
+                            <option>Service 5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Demanded repairs</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Demanded repairs" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Booking by owner or booking on behalf</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Enter Terms and Conditions" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>City/Town</label>
+                    <div class="controls">
+                        <select  class="form-control">
+                            <option>Hyderabad</option>
+                            <option>Banglore</option>
+                            <option>Chennai</option>
+                            <option>Mumbai</option>
+                            <option>Pune</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label></label>
+                    <div class="controls">
+                        <button class="btn btn-primary" type="submit">
+                            Book It..
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default" style="height: 500px; width: 100%;">
+                <div id="map-canvas"></div>
+            </div>
+        </div>
+    </div>
+    <!--/panel content-->
+</div>
+

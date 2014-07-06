@@ -1,0 +1,33 @@
+﻿@model List<SOP.Application.Models.SubAdminModel>
+
+@{
+    ViewBag.Title = "SubAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="sub-header">Sub Admin Page</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Sub Admin Name</th>
+                <th>Mobile No</th>
+                <th>Email Id</th>
+                <th>User Id</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.EmailId</td>
+                    <td>@item.UserId</td>
+                    <td>@item.Password</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "Dealer Creation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp" type="text/javascript"></script>
+<script type="text/javascript">
+    function initialize() {
+        var mapOptions = {
+            zoom: 10,
+            center: new google.maps.LatLng(12.876069959946506, 77.65502940863371)
+        };
+        var mapDiv = document.getElementById('map-canvas');
+        var map = new google.maps.Map(mapDiv, mapOptions);
+        google.maps.event.addListener(map, "click", function (e) {
+            var latLng = e.latLng;
+            $("#txtlatlong").val(latLng);
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <i class="glyphicon glyphicon-wrench pull-right"></i>
+                <h4>Dealer Creation</h4>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form class="form form-vertical">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="control-group">
+                            <label>Dealer Name</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Enter Dealer Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Contact Person Name</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Enter Contact Person Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Dealer Location</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Enter Dealer Location:" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Dealer Address</label>
+                            <div class="controls">
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Mobile Number</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Enter Mobile Number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Email Id</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Enter Email Id" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>User Id</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Enter User Id" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Password</label>
+                            <div class="controls">
+                                <input type="password" placeholder="Password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Confirm Password</label>
+                            <div class="controls">
+                                <input type="password" placeholder="Confirm Password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label></label>
+                            <div class="controls">
+                                <button class="btn btn-primary" type="submit">
+                                    Create
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="control-group">
+                            <label>Workshop Phone Number</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Enter Workshop Phone Number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Workshop Co-ordinates( Lattitude, Longitude)</label>
+                            <div class="controls">
+                                <input id="txtlatlong" type="text" placeholder="Click on map below to get Lattitude, Longitude" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Primary contact person Name</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Enter Primary contact person Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Primary contact person number</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Primary contact person number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Secondary  contact person number</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Secondary  contact person number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Secondary contact person number</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Secondary contact person number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Workshop General manager Name</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Workshop General manager Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Workshop General Manager Number</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Workshop General Manager Number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Workshop ID</label>
+                            <div class="controls">
+                                <input type="text" placeholder="Workshop ID" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default" style="height: 700px; width: 100%;">
+                <div id="map-canvas"></div>
+            </div>
+        </div>
+    </div>
+</div>

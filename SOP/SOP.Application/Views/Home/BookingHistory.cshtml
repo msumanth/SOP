@@ -1,0 +1,48 @@
+﻿@model List<SOP.Application.Models.Booking>
+@{
+    ViewBag.Title = "BookingHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BookingHistory</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Vehicle Number</th>
+                <th>Customer Name</th>
+                <th>Customer Mobile Number</th>
+                <th>Vehicle Model</th>
+                <th>Year of manufacture</th>
+                <th>Service date requested</th>
+                <th>Service type requested</th>
+                <th>customer ID</th>
+                <th>Customer email ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.BookingId</td>
+                    <td>@item.VehicleNumber</td>
+                    <td>@item.CustomerName</td>
+                    <td>@item.CustomerMobileNumber</td>
+                    <td>@item.VehicleModel</td>
+                    <td>@item.Yearofmanufacture</td>
+                    <td>@item.Servicedaterequested</td>
+                    <td>@item.Servicetyperequested</td>
+                    <td>@item.CustomerId</td>
+                    <td>@item.CustomerEmailId</td>
+                    <td>
+                        <button class="btn btn-primary">
+                            <span>Rebook</span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

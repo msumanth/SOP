@@ -1,0 +1,95 @@
+﻿@model List<SOP.Application.Models.SubAdminModel>
+
+@{
+    ViewBag.Title = "SubAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="sub-header">Sub Admin Page</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <i class="glyphicon glyphicon-wrench pull-right"></i>
+            <h4>Sub Admin Creation</h4>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form class="form form-vertical">
+            <div class="control-group">
+                <label>Sub Admin Name</label>
+                <div class="controls">
+                    <input type="text" placeholder="Enter Name" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Mobile Number</label>
+                <div class="controls">
+                    <input type="text" placeholder="Enter Mobile Number" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Email Id</label>
+                <div class="controls">
+                    <input type="text" placeholder="Enter Email Id" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>User Id</label>
+                <div class="controls">
+                    <input type="text" placeholder="Enter User Id" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Password</label>
+                <div class="controls">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Confirm Password</label>
+                <div class="controls">
+                    <input type="password" placeholder="Confirm Password" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label></label>
+                <div class="controls">
+                    <button class="btn btn-primary" type="submit">
+                        Create
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+    <!--/panel content-->
+</div>
+
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Sub Admin Name</th>
+                <th>Mobile No</th>
+                <th>Email Id</th>
+                <th>User Id</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.EmailId</td>
+                    <td>@item.UserId</td>
+                    <td>@item.Password</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

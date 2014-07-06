@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "CouponCreation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <i class="glyphicon glyphicon-wrench pull-right"></i>
+            <h4>Coupon Creation</h4>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form class="form form-vertical">
+            <div class="control-group">
+                <label>Coupon Id</label>
+                <div class="controls">
+                    <input type="text" placeholder="Enter Coupon Id" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Cupon Discount Percentage</label>
+                <div class="controls">
+                    <input type="text" placeholder="Enter Cupon Discount Percentage" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Image</label>
+                <div class="controls">
+                    <input type="file" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Terms and Conditions</label>
+                <div class="controls">
+                    <input type="text" placeholder="Enter Terms and Conditions" class="form-control">
+                </div>
+            </div>
+            <div class="control-group">
+                <label></label>
+                <div class="controls">
+                    <button class="btn btn-primary" type="submit">
+                        Create
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+    <!--/panel content-->
+</div>
