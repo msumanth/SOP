@@ -29,19 +29,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <div class="container-fluid"><a style="display:inline;" href="#"><h2 style="margin:0;padding:0;">Service It Online Portal</h2></a></div>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>     
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Settings</a></li>
+                    <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Settings<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/Home/SubAdminCreation">Sub Admin Creation</a></li>
+                            <li><a href="/Home/DealerCreation">Delear Creation</a></li>
+                            <li><a href="/Home/CouponCreation">Cupon Creation</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Home/Booking">Booking Request</a></li>
+                            <li><a href="/Home/BookingHistory">Booking History</a></li>
+                            <li><a href="#">Service Record</a></li>
+                            <li><a href="#">Serviced Details</a></li>
+                            <li><a href="#">Book for Serving</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Payment Summary</a></li>
+                            <li><a href="#">Online Transaction</a></li>
+                            <li><a href="#">Feedback Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Profile <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">User Name</a></li>
                             <li><a href="#">Mail Id</a></li>
@@ -51,34 +65,11 @@
                     </li>
                 </ul>
             </div>
-            <!--/.nav-collapse -->
-
         </div>
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Overview</a></li>
-                    <li><a href="/Home/SubAdminCreation">Sub Admin Creation</a></li>
-                    <li><a href="/Home/DealerCreation">Delear Creation</a></li>
-                    <li><a href="/Home/CouponCreation">Cupon Creation</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li><a href="/Home/Booking">Booking Request</a></li>
-                    <li><a href="/Home/BookingHistory">Booking History</a></li>
-                    <li><a href="#">Service Record</a></li>
-                    <li><a href="#">Serviced Details</a></li>
-                    <li><a href="#">Book for Serving</a></li>
-
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li><a href="#">Payment Summary</a></li>
-                    <li><a href="#">Online Transaction</a></li>
-                    <li><a href="#">Feedback Details</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="main">
                 @RenderBody()
                 <footer>
                     <p>&copy; ServiceIt @System.DateTime.Now.ToString("yyyy")</p>
