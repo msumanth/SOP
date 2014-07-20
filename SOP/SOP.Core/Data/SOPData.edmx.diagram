@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ff19098878c4ef2a4d42e5a76f41add" Name="Diagram1">
+        <EntityTypeShape EntityType="SOPModel.Booking" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.Coupon" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.Dealer" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.Feedback" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.PaymentSummary" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.Role" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.SecretQuestion" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.Service" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.ServiceType" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.SopUser" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.SubscriptionPackage" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOPModel.Workshop" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <AssociationConnector Association="SOPModel.FK_Booking_Dealer" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Booking_SecretQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Booking_ServiceType" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Feedback_Booking" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Feedback_Dealer" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Service_Dealer" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Workshop_Dealer" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_Feedback_SopUser" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_PaymentSummary_SubscriptionPackage" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_PaymentSummary_Workshop" ManuallyRouted="false" />
+        <AssociationConnector Association="SOPModel.FK_SopUser_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

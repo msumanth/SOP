@@ -50,3 +50,11 @@ C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\System.Web.WebPa
 C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\obj\Debug\SOP.Application.csprojResolveAssemblyReference.cache
 C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\obj\Debug\SOP.Application.dll
 C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\obj\Debug\SOP.Application.pdb
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\Elmah.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\Elmah.Mvc.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\log4net.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\log4net.xml
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\SOP.Core.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\EntityFramework.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\SOP.Core.pdb
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Application\bin\EntityFramework.xml

@@ -1,4 +1,5 @@
 ﻿using SOP.Application.Models;
+using SOP.Core.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SOP.Application.Controllers
 
         public ActionResult Index()
         {
+            var sx = SymmetricEncryption.EncryptString("Welcome1!");
             return View();
         }
 
@@ -57,17 +59,17 @@ namespace SOP.Application.Controllers
             {
                 model.Add(new Booking
                 {
-                    BookingId = i+1,
+                    BookingId = i + 1,
                     VehicleNumber = "BG-DF" + i,
-                    CustomerName="Customer " +i,
-                    CustomerMobileNumber=(874+i).ToString(),
-                    CustomerEmailId="customer"+i+"@somemail.com",
-                    CustomerId=i+1,
-                    RequestId=(i+1).ToString(),
-                    Servicedaterequested=DateTime.Now.ToString(),
-                    Servicetyperequested="Type"+i,
-                    VehicleModel="Model"+i,
-                    Yearofmanufacture=1998+i,
+                    CustomerName = "Customer " + i,
+                    CustomerMobileNumber = (874 + i).ToString(),
+                    CustomerEmailId = "customer" + i + "@somemail.com",
+                    CustomerId = i + 1,
+                    RequestId = (i + 1).ToString(),
+                    Servicedaterequested = DateTime.Now.ToString(),
+                    Servicetyperequested = "Type" + i,
+                    VehicleModel = "Model" + i,
+                    Yearofmanufacture = 1998 + i,
                 });
             }
             return View(model);

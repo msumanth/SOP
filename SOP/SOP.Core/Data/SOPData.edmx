@@ -1,0 +1,904 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SOPModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SOPModelStoreContainer">
+          <EntitySet Name="Booking" EntityType="SOPModel.Store.Booking" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Coupon" EntityType="SOPModel.Store.Coupon" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Dealer" EntityType="SOPModel.Store.Dealer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Feedback" EntityType="SOPModel.Store.Feedback" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PaymentSummary" EntityType="SOPModel.Store.PaymentSummary" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="SOPModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SecretQuestions" EntityType="SOPModel.Store.SecretQuestions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Service" EntityType="SOPModel.Store.Service" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ServiceType" EntityType="SOPModel.Store.ServiceType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SopUser" EntityType="SOPModel.Store.SopUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubscriptionPackage" EntityType="SOPModel.Store.SubscriptionPackage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="SOPModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Workshop" EntityType="SOPModel.Store.Workshop" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Booking_Dealer" Association="SOPModel.Store.FK_Booking_Dealer">
+            <End Role="Dealer" EntitySet="Dealer" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_SecretQuestions" Association="SOPModel.Store.FK_Booking_SecretQuestions">
+            <End Role="SecretQuestions" EntitySet="SecretQuestions" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_ServiceType" Association="SOPModel.Store.FK_Booking_ServiceType">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_Booking" Association="SOPModel.Store.FK_Feedback_Booking">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_Dealer" Association="SOPModel.Store.FK_Feedback_Dealer">
+            <End Role="Dealer" EntitySet="Dealer" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_SopUser" Association="SOPModel.Store.FK_Feedback_SopUser">
+            <End Role="SopUser" EntitySet="SopUser" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentSummary_SubscriptionPackage" Association="SOPModel.Store.FK_PaymentSummary_SubscriptionPackage">
+            <End Role="SubscriptionPackage" EntitySet="SubscriptionPackage" />
+            <End Role="PaymentSummary" EntitySet="PaymentSummary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentSummary_Workshop" Association="SOPModel.Store.FK_PaymentSummary_Workshop">
+            <End Role="Workshop" EntitySet="Workshop" />
+            <End Role="PaymentSummary" EntitySet="PaymentSummary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_Dealer" Association="SOPModel.Store.FK_Service_Dealer">
+            <End Role="Dealer" EntitySet="Dealer" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SopUser_Roles" Association="SOPModel.Store.FK_SopUser_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="SopUser" EntitySet="SopUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workshop_Dealer" Association="SOPModel.Store.FK_Workshop_Dealer">
+            <End Role="Dealer" EntitySet="Dealer" />
+            <End Role="Workshop" EntitySet="Workshop" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="VehicleOwnerName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="VehicleOwnerDOB" Type="datetime" />
+          <Property Name="VehicleNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="VehicleLocation" Type="nvarchar" MaxLength="200" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Mobile" Type="numeric" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="DelearId" Type="int" Nullable="false" />
+          <Property Name="DateOfService" Type="datetime" Nullable="false" />
+          <Property Name="ServiceType" Type="int" Nullable="false" />
+          <Property Name="DemandedRepairs" Type="nvarchar(max)" />
+          <Property Name="BookingOnBehalf" Type="bit" Nullable="false" />
+          <Property Name="ManufacturingYear" Type="int" />
+          <Property Name="City/Town" Type="nvarchar" MaxLength="100" />
+          <Property Name="VehicleModel" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SecretQuestion" Type="int" />
+          <Property Name="SecretAnswer" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Coupon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DiscountPercentage" Type="int" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TermsandCondition" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dealer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PrimaryContactPersonName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="PrimaryContactPersonNum" Type="numeric" Nullable="false" />
+          <Property Name="SecondaryContactPersonName" Type="nvarchar" MaxLength="200" />
+          <Property Name="SecondaryContactPersonNum" Type="numeric" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="BookingId" Type="int" Nullable="false" />
+          <Property Name="Feedback" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DealerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentSummary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="WorkshopId" Type="int" Nullable="false" />
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="DateOfPayment" Type="datetime" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SecretQuestions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="nvarchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BookingId" Type="int" Nullable="false" />
+          <Property Name="DealerId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ServiceType" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SopUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Mobile" Type="numeric" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubscriptionPackage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Package" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Workshop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="PhoneNumber" Type="numeric" Nullable="false" />
+          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MapCoordinates" Type="nvarchar" MaxLength="50" />
+          <Property Name="GeneralManagerName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="GeneralManagerNum" Type="numeric" />
+          <Property Name="DelearId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Booking_Dealer">
+          <End Role="Dealer" Type="SOPModel.Store.Dealer" Multiplicity="1" />
+          <End Role="Booking" Type="SOPModel.Store.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="DelearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_SecretQuestions">
+          <End Role="SecretQuestions" Type="SOPModel.Store.SecretQuestions" Multiplicity="0..1" />
+          <End Role="Booking" Type="SOPModel.Store.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecretQuestions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="SecretQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_ServiceType">
+          <End Role="ServiceType" Type="SOPModel.Store.ServiceType" Multiplicity="1" />
+          <End Role="Booking" Type="SOPModel.Store.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="ServiceType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_Booking">
+          <End Role="Booking" Type="SOPModel.Store.Booking" Multiplicity="1" />
+          <End Role="Feedback" Type="SOPModel.Store.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_Dealer">
+          <End Role="Dealer" Type="SOPModel.Store.Dealer" Multiplicity="1" />
+          <End Role="Feedback" Type="SOPModel.Store.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="DealerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_SopUser">
+          <End Role="SopUser" Type="SOPModel.Store.SopUser" Multiplicity="1" />
+          <End Role="Feedback" Type="SOPModel.Store.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SopUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentSummary_SubscriptionPackage">
+          <End Role="SubscriptionPackage" Type="SOPModel.Store.SubscriptionPackage" Multiplicity="1" />
+          <End Role="PaymentSummary" Type="SOPModel.Store.PaymentSummary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubscriptionPackage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentSummary">
+              <PropertyRef Name="PackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentSummary_Workshop">
+          <End Role="Workshop" Type="SOPModel.Store.Workshop" Multiplicity="1" />
+          <End Role="PaymentSummary" Type="SOPModel.Store.PaymentSummary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workshop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentSummary">
+              <PropertyRef Name="WorkshopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Dealer">
+          <End Role="Dealer" Type="SOPModel.Store.Dealer" Multiplicity="1" />
+          <End Role="Service" Type="SOPModel.Store.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="DealerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SopUser_Roles">
+          <End Role="Roles" Type="SOPModel.Store.Roles" Multiplicity="1" />
+          <End Role="SopUser" Type="SOPModel.Store.SopUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SopUser">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workshop_Dealer">
+          <End Role="Dealer" Type="SOPModel.Store.Dealer" Multiplicity="1" />
+          <End Role="Workshop" Type="SOPModel.Store.Workshop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Workshop">
+              <PropertyRef Name="DelearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SOPModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SOPEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="SOPModel.Booking" />
+          <EntitySet Name="Coupons" EntityType="SOPModel.Coupon" />
+          <EntitySet Name="Dealers" EntityType="SOPModel.Dealer" />
+          <EntitySet Name="Feedbacks" EntityType="SOPModel.Feedback" />
+          <EntitySet Name="PaymentSummaries" EntityType="SOPModel.PaymentSummary" />
+          <EntitySet Name="Roles" EntityType="SOPModel.Role" />
+          <EntitySet Name="SecretQuestions" EntityType="SOPModel.SecretQuestion" />
+          <EntitySet Name="Services" EntityType="SOPModel.Service" />
+          <EntitySet Name="ServiceTypes" EntityType="SOPModel.ServiceType" />
+          <EntitySet Name="SopUsers" EntityType="SOPModel.SopUser" />
+          <EntitySet Name="SubscriptionPackages" EntityType="SOPModel.SubscriptionPackage" />
+          <EntitySet Name="sysdiagrams" EntityType="SOPModel.sysdiagram" />
+          <EntitySet Name="Workshops" EntityType="SOPModel.Workshop" />
+          <AssociationSet Name="FK_Booking_Dealer" Association="SOPModel.FK_Booking_Dealer">
+            <End Role="Dealer" EntitySet="Dealers" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_SecretQuestions" Association="SOPModel.FK_Booking_SecretQuestions">
+            <End Role="SecretQuestions" EntitySet="SecretQuestions" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_ServiceType" Association="SOPModel.FK_Booking_ServiceType">
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_Booking" Association="SOPModel.FK_Feedback_Booking">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_Dealer" Association="SOPModel.FK_Feedback_Dealer">
+            <End Role="Dealer" EntitySet="Dealers" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_Dealer" Association="SOPModel.FK_Service_Dealer">
+            <End Role="Dealer" EntitySet="Dealers" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workshop_Dealer" Association="SOPModel.FK_Workshop_Dealer">
+            <End Role="Dealer" EntitySet="Dealers" />
+            <End Role="Workshop" EntitySet="Workshops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_SopUser" Association="SOPModel.FK_Feedback_SopUser">
+            <End Role="SopUser" EntitySet="SopUsers" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentSummary_SubscriptionPackage" Association="SOPModel.FK_PaymentSummary_SubscriptionPackage">
+            <End Role="SubscriptionPackage" EntitySet="SubscriptionPackages" />
+            <End Role="PaymentSummary" EntitySet="PaymentSummaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentSummary_Workshop" Association="SOPModel.FK_PaymentSummary_Workshop">
+            <End Role="Workshop" EntitySet="Workshops" />
+            <End Role="PaymentSummary" EntitySet="PaymentSummaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SopUser_Roles" Association="SOPModel.FK_SopUser_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="SopUser" EntitySet="SopUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="VehicleOwnerName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="VehicleOwnerDOB" Type="DateTime" Precision="3" />
+          <Property Name="VehicleNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="VehicleLocation" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Mobile" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="DelearId" Type="Int32" Nullable="false" />
+          <Property Name="DateOfService" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ServiceType" Type="Int32" Nullable="false" />
+          <Property Name="DemandedRepairs" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BookingOnBehalf" Type="Boolean" Nullable="false" />
+          <Property Name="ManufacturingYear" Type="Int32" />
+          <Property Name="City_Town" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="VehicleModel" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SecretQuestion" Type="Int32" />
+          <Property Name="SecretAnswer" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Dealer" Relationship="SOPModel.FK_Booking_Dealer" FromRole="Booking" ToRole="Dealer" />
+          <NavigationProperty Name="SecretQuestion1" Relationship="SOPModel.FK_Booking_SecretQuestions" FromRole="Booking" ToRole="SecretQuestions" />
+          <NavigationProperty Name="ServiceType1" Relationship="SOPModel.FK_Booking_ServiceType" FromRole="Booking" ToRole="ServiceType" />
+          <NavigationProperty Name="Feedbacks" Relationship="SOPModel.FK_Feedback_Booking" FromRole="Booking" ToRole="Feedback" />
+        </EntityType>
+        <EntityType Name="Coupon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DiscountPercentage" Type="Int32" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TermsandCondition" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Dealer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PrimaryContactPersonName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PrimaryContactPersonNum" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SecondaryContactPersonName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SecondaryContactPersonNum" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Bookings" Relationship="SOPModel.FK_Booking_Dealer" FromRole="Dealer" ToRole="Booking" />
+          <NavigationProperty Name="Feedbacks" Relationship="SOPModel.FK_Feedback_Dealer" FromRole="Dealer" ToRole="Feedback" />
+          <NavigationProperty Name="Services" Relationship="SOPModel.FK_Service_Dealer" FromRole="Dealer" ToRole="Service" />
+          <NavigationProperty Name="Workshops" Relationship="SOPModel.FK_Workshop_Dealer" FromRole="Dealer" ToRole="Workshop" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="BookingId" Type="Int32" Nullable="false" />
+          <Property Name="Feedback1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DealerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="SOPModel.FK_Feedback_Booking" FromRole="Feedback" ToRole="Booking" />
+          <NavigationProperty Name="Dealer" Relationship="SOPModel.FK_Feedback_Dealer" FromRole="Feedback" ToRole="Dealer" />
+          <NavigationProperty Name="SopUser" Relationship="SOPModel.FK_Feedback_SopUser" FromRole="Feedback" ToRole="SopUser" />
+        </EntityType>
+        <EntityType Name="PaymentSummary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="WorkshopId" Type="Int32" Nullable="false" />
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="DateOfPayment" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SubscriptionPackage" Relationship="SOPModel.FK_PaymentSummary_SubscriptionPackage" FromRole="PaymentSummary" ToRole="SubscriptionPackage" />
+          <NavigationProperty Name="Workshop" Relationship="SOPModel.FK_PaymentSummary_Workshop" FromRole="PaymentSummary" ToRole="Workshop" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="SopUsers" Relationship="SOPModel.FK_SopUser_Roles" FromRole="Roles" ToRole="SopUser" />
+        </EntityType>
+        <EntityType Name="SecretQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Bookings" Relationship="SOPModel.FK_Booking_SecretQuestions" FromRole="SecretQuestions" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingId" Type="Int32" Nullable="false" />
+          <Property Name="DealerId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" />
+          <NavigationProperty Name="Dealer" Relationship="SOPModel.FK_Service_Dealer" FromRole="Service" ToRole="Dealer" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ServiceType1" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Bookings" Relationship="SOPModel.FK_Booking_ServiceType" FromRole="ServiceType" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="SopUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Mobile" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Feedbacks" Relationship="SOPModel.FK_Feedback_SopUser" FromRole="SopUser" ToRole="Feedback" />
+          <NavigationProperty Name="Role" Relationship="SOPModel.FK_SopUser_Roles" FromRole="SopUser" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="SubscriptionPackage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Package" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PaymentSummaries" Relationship="SOPModel.FK_PaymentSummary_SubscriptionPackage" FromRole="SubscriptionPackage" ToRole="PaymentSummary" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Workshop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MapCoordinates" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="GeneralManagerName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="GeneralManagerNum" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DelearId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dealer" Relationship="SOPModel.FK_Workshop_Dealer" FromRole="Workshop" ToRole="Dealer" />
+          <NavigationProperty Name="PaymentSummaries" Relationship="SOPModel.FK_PaymentSummary_Workshop" FromRole="Workshop" ToRole="PaymentSummary" />
+        </EntityType>
+        <Association Name="FK_Booking_Dealer">
+          <End Role="Dealer" Type="SOPModel.Dealer" Multiplicity="1" />
+          <End Role="Booking" Type="SOPModel.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="DelearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_SecretQuestions">
+          <End Role="SecretQuestions" Type="SOPModel.SecretQuestion" Multiplicity="0..1" />
+          <End Role="Booking" Type="SOPModel.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecretQuestions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="SecretQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_ServiceType">
+          <End Role="ServiceType" Type="SOPModel.ServiceType" Multiplicity="1" />
+          <End Role="Booking" Type="SOPModel.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="ServiceType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_Booking">
+          <End Role="Booking" Type="SOPModel.Booking" Multiplicity="1" />
+          <End Role="Feedback" Type="SOPModel.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_Dealer">
+          <End Role="Dealer" Type="SOPModel.Dealer" Multiplicity="1" />
+          <End Role="Feedback" Type="SOPModel.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="DealerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Dealer">
+          <End Role="Dealer" Type="SOPModel.Dealer" Multiplicity="1" />
+          <End Role="Service" Type="SOPModel.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="DealerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workshop_Dealer">
+          <End Role="Dealer" Type="SOPModel.Dealer" Multiplicity="1" />
+          <End Role="Workshop" Type="SOPModel.Workshop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Workshop">
+              <PropertyRef Name="DelearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_SopUser">
+          <End Role="SopUser" Type="SOPModel.SopUser" Multiplicity="1" />
+          <End Role="Feedback" Type="SOPModel.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SopUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentSummary_SubscriptionPackage">
+          <End Role="SubscriptionPackage" Type="SOPModel.SubscriptionPackage" Multiplicity="1" />
+          <End Role="PaymentSummary" Type="SOPModel.PaymentSummary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubscriptionPackage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentSummary">
+              <PropertyRef Name="PackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentSummary_Workshop">
+          <End Role="Workshop" Type="SOPModel.Workshop" Multiplicity="1" />
+          <End Role="PaymentSummary" Type="SOPModel.PaymentSummary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workshop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentSummary">
+              <PropertyRef Name="WorkshopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SopUser_Roles">
+          <End Role="Roles" Type="SOPModel.Role" Multiplicity="1" />
+          <End Role="SopUser" Type="SOPModel.SopUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SopUser">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SOPModelStoreContainer" CdmEntityContainer="SOPEntities">
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="SOPModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VehicleOwnerName" ColumnName="VehicleOwnerName" />
+                <ScalarProperty Name="VehicleOwnerDOB" ColumnName="VehicleOwnerDOB" />
+                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+                <ScalarProperty Name="VehicleLocation" ColumnName="VehicleLocation" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="DelearId" ColumnName="DelearId" />
+                <ScalarProperty Name="DateOfService" ColumnName="DateOfService" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="DemandedRepairs" ColumnName="DemandedRepairs" />
+                <ScalarProperty Name="BookingOnBehalf" ColumnName="BookingOnBehalf" />
+                <ScalarProperty Name="ManufacturingYear" ColumnName="ManufacturingYear" />
+                <ScalarProperty Name="City_Town" ColumnName="City/Town" />
+                <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+                <ScalarProperty Name="SecretQuestion" ColumnName="SecretQuestion" />
+                <ScalarProperty Name="SecretAnswer" ColumnName="SecretAnswer" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coupons">
+            <EntityTypeMapping TypeName="SOPModel.Coupon">
+              <MappingFragment StoreEntitySet="Coupon">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="TermsandCondition" ColumnName="TermsandCondition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dealers">
+            <EntityTypeMapping TypeName="SOPModel.Dealer">
+              <MappingFragment StoreEntitySet="Dealer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PrimaryContactPersonName" ColumnName="PrimaryContactPersonName" />
+                <ScalarProperty Name="PrimaryContactPersonNum" ColumnName="PrimaryContactPersonNum" />
+                <ScalarProperty Name="SecondaryContactPersonName" ColumnName="SecondaryContactPersonName" />
+                <ScalarProperty Name="SecondaryContactPersonNum" ColumnName="SecondaryContactPersonNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="SOPModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="Feedback1" ColumnName="Feedback" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentSummaries">
+            <EntityTypeMapping TypeName="SOPModel.PaymentSummary">
+              <MappingFragment StoreEntitySet="PaymentSummary">
+                <ScalarProperty Name="WorkshopId" ColumnName="WorkshopId" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DateOfPayment" ColumnName="DateOfPayment" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SOPModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecretQuestions">
+            <EntityTypeMapping TypeName="SOPModel.SecretQuestion">
+              <MappingFragment StoreEntitySet="SecretQuestions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="SOPModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTypes">
+            <EntityTypeMapping TypeName="SOPModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServiceType1" ColumnName="ServiceType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SopUsers">
+            <EntityTypeMapping TypeName="SOPModel.SopUser">
+              <MappingFragment StoreEntitySet="SopUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionPackages">
+            <EntityTypeMapping TypeName="SOPModel.SubscriptionPackage">
+              <MappingFragment StoreEntitySet="SubscriptionPackage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Package" ColumnName="Package" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SOPModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workshops">
+            <EntityTypeMapping TypeName="SOPModel.Workshop">
+              <MappingFragment StoreEntitySet="Workshop">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="MapCoordinates" ColumnName="MapCoordinates" />
+                <ScalarProperty Name="GeneralManagerName" ColumnName="GeneralManagerName" />
+                <ScalarProperty Name="GeneralManagerNum" ColumnName="GeneralManagerNum" />
+                <ScalarProperty Name="DelearId" ColumnName="DelearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

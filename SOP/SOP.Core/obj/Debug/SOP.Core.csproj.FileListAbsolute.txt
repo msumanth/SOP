@@ -1,0 +1,15 @@
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\SOP.Core.dll.config
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\SOP.Core.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\SOP.Core.pdb
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\EntityFramework.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\log4net.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\System.Web.Http.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\EntityFramework.xml
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\log4net.xml
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\System.Web.Http.xml
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\obj\Debug\SOP.Core.csprojResolveAssemblyReference.cache
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\obj\Debug\SOP.Core.dll
+C:\Users\MSUMANTH\Desktop\SOP.git\trunk\SOP\SOP.Core\obj\Debug\SOP.Core.pdb
