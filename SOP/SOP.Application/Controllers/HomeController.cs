@@ -15,8 +15,8 @@ namespace SOP.Application.Controllers
 
         public ActionResult Index()
         {
-            var sx = SymmetricEncryption.EncryptString("Welcome1!");
-            return View();
+            var model = new LoginModel();
+            return View(model);
         }
 
         public ActionResult SubAdminCreation()

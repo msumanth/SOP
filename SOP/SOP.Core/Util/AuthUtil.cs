@@ -11,6 +11,25 @@ namespace SOP.Core.Util
 {
     public class AuthUtil
     {
+        public static bool IsAuthenticated
+        {
+            get
+            {
+                return HttpContext.Current.User.Identity.IsAuthenticated;
+            }
+        }
+
+        public static int UserId
+        {
+            get
+            {
+                if (HttpContext.Current.User.Identity != null && IsAuthenticated)
+                    return Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+                else
+                    return 0;
+            }
+        }
+
         /// <summary>
         /// Create A AUthentication Token
         /// </summary>
@@ -32,6 +51,7 @@ namespace SOP.Core.Util
                 Expires = ticket.Expiration,
                 Secure = false
             };
+            //Response.Cookies.Add(Token);
             return authenticationCookie;
 
         }

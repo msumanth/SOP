@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOP.Core.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -51,6 +52,49 @@ namespace SOP.Application.ActionFilters
                 base.HandleUnauthorizedRequest(context);
                 context.Result = new RedirectResult(String.Concat(_loginURL, "?ReturnUrl=", HttpUtility.UrlEncode(_returnURL)));
             }
+        }
+    }
+
+    /// <summary>
+    /// Clear Cache Attribute to clear Browsers Cache
+    /// </summary>
+    public class ClearCacheAttribute : ActionFilterAttribute
+    {
+        public override void OnResultExecuting(ResultExecutingContext filterContext)
+        {
+            filterContext.HttpContext.Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
+            filterContext.HttpContext.Response.Cache.SetValidUntilExpires(false);
+            filterContext.HttpContext.Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+            filterContext.HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            filterContext.HttpContext.Response.Cache.SetNoStore();
+
+            base.OnResultExecuting(filterContext);
+
+
+
+        }
+    }
+
+
+    /// <summary>
+    /// Check User Authenticated Cookie
+    /// </summary>
+    public class CheckUserCookieAttribute : ActionFilterAttribute, IActionFilter
+    {
+        void IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
+        {
+
+            if (AuthUtil.IsAuthenticated)
+            {
+                //var res = UserBL.CheckUser(CurrentUser.UserId);
+                //if (!res)
+                //{
+                    FormsAuthentication.SignOut();
+                    filterContext.HttpContext.Response.End();
+                //}
+            }
+
+
         }
     }
 }
