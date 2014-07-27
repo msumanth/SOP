@@ -90,11 +90,11 @@
     <Property Name="VehicleModel" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="SecretQuestion" Type="Int32" />
     <Property Name="SecretAnswer" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-    <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="LastModifiedBy" Type="Int32" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" />
     <NavigationProperty Name="Dealer" Relationship="SOPModel.FK_Booking_Dealer" FromRole="Booking" ToRole="Dealer" />
     <NavigationProperty Name="SecretQuestion1" Relationship="SOPModel.FK_Booking_SecretQuestions" FromRole="Booking" ToRole="SecretQuestions" />
     <NavigationProperty Name="ServiceType1" Relationship="SOPModel.FK_Booking_ServiceType" FromRole="Booking" ToRole="ServiceType" />

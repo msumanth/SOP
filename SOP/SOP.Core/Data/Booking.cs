@@ -14,7 +14,7 @@ namespace SOP.Core.Data
     
     public partial class Booking
     {
-        public Booking()
+        public  Booking()
         {
             this.Feedbacks = new HashSet<Feedback>();
         }
@@ -37,11 +37,11 @@ namespace SOP.Core.Data
         public string VehicleModel { get; set; }
         public Nullable<int> SecretQuestion { get; set; }
         public string SecretAnswer { get; set; }
-        public System.DateTime CreatedBy { get; set; }
         public Nullable<int> LastModifiedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> LastModifiedDate { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     
         public virtual Dealer Dealer { get; set; }
         public virtual SecretQuestion SecretQuestion1 { get; set; }

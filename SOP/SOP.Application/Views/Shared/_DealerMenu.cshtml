@@ -1,4 +1,18 @@
-﻿<li><a href="/Dealer/Index">DashBoard</a></li>
-<li><a href="/Dealer/Bookings">Bookings</a></li>
-<li><a href="/Dealer/Feedbacks">Help</a></li>
-<li><a href="#">Help</a></li>
+﻿@{
+    Layout = null;
+    var role = (int)TempData["Role"];
+}
+
+<li><a href="/Dealer/Index">DashBoard</a></li>
+<li><a href="/Dealer#bookings">Bookings</a></li>
+<li><a href="/Dealer#feedbacks">Feedback</a></li>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-gear fa-fw"></i>Settings<i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-tasks">
+       <li><a href="/Dealer/DealerDetails/"><i class="fa fa-wrench fa-fw"></i>Workshop Details</a></li> <li class="divider"></li>
+        <li><a href="/Dealer/PaymentSummary">Payment Summary</a></li> <li class="divider"></li>
+        <li><a href="/Dealer/Workshop">Online Transations</a></li>
+    </ul>
+</li>

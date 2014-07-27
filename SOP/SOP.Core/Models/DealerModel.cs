@@ -25,4 +25,12 @@ namespace SOP.Core.Models
 
        
     }
+
+    public class ServiceCenterModel
+    {
+        public string MobileNumber { get; set; }
+        public string EmailId { get; set; }
+        public string MapLt { get; set; }
+        public string MapLg { get; set; }
+    }
 }

@@ -15,6 +15,7 @@ namespace SOP.Core.Repositpory
             using (var context = new SOPEntities())
             {
                 var dealers = context.Dealers.ToList();
+
                 return dealers;
             }
         }
@@ -28,13 +29,58 @@ namespace SOP.Core.Repositpory
             }
         }
 
-        public Dealer GetDealer(int userId)
+        public Dealer GetDealerWithUserId(int userId)
         {
             using (var context = new SOPEntities())
             {
                 var da = context.DealerAssociations.Where(u => u.UserId == userId).FirstOrDefault();
                 var dealer = context.Dealers.Where(d => d.Id == da.DealerId).FirstOrDefault();
                 return dealer;
+            }
+        }
+
+        public ServiceCenterModel GetDealer(int dealerId)
+        {
+            using (var context = new SOPEntities())
+            {
+                var dealer = context.Dealers.Where(d => d.Id == dealerId).FirstOrDefault();
+                var da = context.DealerAssociations.Where(d => d.DealerId == dealerId).FirstOrDefault();
+                var user = context.SopUsers.Where(u => u.Id == da.UserId).FirstOrDefault();
+                var workshop = context.Workshops.Where(w => w.DelearId == dealerId).FirstOrDefault();
+                var lt = workshop.MapCoordinates.Substring(workshop.MapCoordinates.IndexOf('(') + 1, workshop.MapCoordinates.IndexOf(',') - 1);
+                var lg = workshop.MapCoordinates.Substring(workshop.MapCoordinates.IndexOf(',') + 1, (workshop.MapCoordinates.IndexOf(')') - workshop.MapCoordinates.IndexOf(',') - 1));
+                return new ServiceCenterModel { MobileNumber = user.Mobile.ToString(), EmailId = user.EmailId, MapLt = lt, MapLg = lg };
+            }
+        }
+
+        public DealerModel GetDealerDetails(int dealerId)
+        {
+            using (var context = new SOPEntities())
+            {
+
+                var dealer = context.Dealers.Where(d => d.Id == dealerId).FirstOrDefault();
+                var da = context.DealerAssociations.Where(d => d.DealerId == dealerId).FirstOrDefault();
+                var user = context.SopUsers.Where(u => u.Id == da.Id).FirstOrDefault();
+                var workshop = context.Workshops.Where(w => w.DelearId == dealerId).FirstOrDefault();
+                var model = new DealerModel
+                {
+                    UserId = user.Id,
+                    DealerId = dealer.Id,
+                    DealerName = dealer.Name,
+                    DealerLocation = workshop.Location,
+                    Address = dealer.Address,
+                    PrimaryContactNumber = dealer.PrimaryContactPersonNum.ToString(),
+                    PrimaryContactPerson = dealer.PrimaryContactPersonName,
+                    SecondaryContactPerson = dealer.SecondaryContactPersonName,
+                    SecondaryContactNumber = dealer.SecondaryContactPersonNum.ToString(),
+                    WorkshopId = workshop.Id,
+                    WorkShopGeneralManager = workshop.GeneralManagerName,
+                    WorkShopGeneralManagerNumber = workshop.GeneralManagerNum.ToString(),
+                    WorkshopCoordinates = workshop.MapCoordinates,
+                    WorkShopNumber = workshop.PhoneNumber.ToString()
+                };
+
+                return model;
             }
         }
 
@@ -52,7 +98,8 @@ namespace SOP.Core.Repositpory
                     PrimaryContactPersonName = model.PrimaryContactPerson,
                     PrimaryContactPersonNum = decimal.Parse(model.SecondaryContactNumber),
                     SecondaryContactPersonName = model.SecondaryContactPerson,
-                    SecondaryContactPersonNum = decimal.Parse(model.SecondaryContactNumber)
+                    SecondaryContactPersonNum = decimal.Parse(model.SecondaryContactNumber),
+                    UserId = model.UserId
                 };
                 context.Dealers.Add(dealer);
                 context.SaveChanges();

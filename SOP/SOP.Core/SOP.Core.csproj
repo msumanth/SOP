@@ -118,8 +118,10 @@
       <DependentUpon>SOPData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BookingModel.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\CustomPrinciple.cs" />
     <Compile Include="Models\DealerModel.cs" />
+    <Compile Include="Models\FeedbackModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositpory\BookingDao.cs" />
     <Compile Include="Repositpory\DbRepository.cs" />

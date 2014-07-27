@@ -95,11 +95,11 @@
           <Property Name="VehicleModel" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="SecretQuestion" Type="int" />
           <Property Name="SecretAnswer" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreatedBy" Type="datetime" Nullable="false" />
           <Property Name="LastModifiedBy" Type="int" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="LastModifiedDate" Type="datetime" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
         </EntityType>
         <EntityType Name="Coupon">
           <Key>
@@ -485,11 +485,11 @@
           <Property Name="VehicleModel" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="SecretQuestion" Type="Int32" />
           <Property Name="SecretAnswer" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LastModifiedBy" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
           <NavigationProperty Name="Dealer" Relationship="SOPModel.FK_Booking_Dealer" FromRole="Booking" ToRole="Dealer" />
           <NavigationProperty Name="SecretQuestion1" Relationship="SOPModel.FK_Booking_SecretQuestions" FromRole="Booking" ToRole="SecretQuestions" />
           <NavigationProperty Name="ServiceType1" Relationship="SOPModel.FK_Booking_ServiceType" FromRole="Booking" ToRole="ServiceType" />
@@ -833,11 +833,11 @@
                 <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
                 <ScalarProperty Name="SecretQuestion" ColumnName="SecretQuestion" />
                 <ScalarProperty Name="SecretAnswer" ColumnName="SecretAnswer" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

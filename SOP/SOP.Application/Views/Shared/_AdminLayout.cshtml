@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    var role = (int)TempData["Role"];
 }
 
 <!DOCTYPE html>
@@ -16,25 +17,25 @@
     <link href="~/Content/sb-admin.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/main.css" rel="stylesheet" />
-
+    <link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/datepicker/css/datepicker.css" rel="stylesheet" />
 </head>
 <body>
 
     <div id="wrapper">
-
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Service It Online Portal</a>
+                <a class="navbar-brand" href="#" style="margin-left: 10%;">ServiceIt Online Portal</a>
             </div>
-            <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
@@ -50,26 +51,65 @@
                 </li>
                 <!-- /.dropdown -->
             </ul>
-            <!-- /.navbar-top-links -->
 
             <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
-                    @Html.Partial("_AdminMenu")
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="/Admin/Index"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>Users<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Admin/Subadmin">SubAdmins</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Dealer">Dealers</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Customer">Customers</a>
+                                </li>
+                            </ul>
+                        </li>
+                         <li>
+                            <a href="/Admin/DealerDetails"><i class="fa fa-edit fa-fw"></i>Dealer Details</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Bookings"><i class="fa fa-edit fa-fw"></i>Bookings</a>
+                        </li>
+                         <li>
+                            <a href="/Admin/Feedbacks"><i class="fa fa-edit fa-fw"></i>Feedbacks</a>
+                        </li>
+                         <li>
+                            <a href="/Admin/Bookings"><i class="fa fa-edit fa-fw"></i>Payment Summary</a>
+                        </li>
+                         <li>
+                            <a href="/Admin/Bookings"><i class="fa fa-edit fa-fw"></i>Coupon</a>
+                        </li>
+                         <li>
+                            <a href="/Admin/ServiceTypes"><i class="fa fa-edit fa-fw"></i>Service Types</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
-
-        <div id="page-wrapper">
+        <div class="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     @RenderBody()
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
 
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <span class="pull-left">© 2014 <a href="#" title="ServiceIt" target="_blank">ServiceIt </a></span>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /#wrapper -->
 
@@ -80,8 +120,19 @@
     <!-- Page-Level Plugin Scripts - Blank -->
     <!-- SB Admin Scripts - Include with every page -->
     <script src="~/Scripts/sb-admin.js"></script>
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap.js"></script>
     <!-- Page-Level Demo Scripts - Blank - Use for reference -->
-
+    <script>
+        $(document).ready(function () {
+            $('.dtable').dataTable();
+            $('.datepicker').datepicker().on('changeDate', function (ev) {
+                //$('#dpDob').val(ev.date.toLocaleDateString());
+                //$('.datepicker').datepicker('hide');
+            });
+        });
+    </script>
 </body>
 
 </html>

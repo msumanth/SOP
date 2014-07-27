@@ -1,0 +1,78 @@
+﻿@model SOP.Core.Models.FeedbackModel
+
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="login-panel panel panel-default" style="margin: 2% 0">
+    <div class="panel-heading">
+        <h3 class="panel-title">Feedback</h3>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.UserId);
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Vehicle owner name</label>
+                            @Html.TextBoxFor(d => d.VehicleOwnerName, new { @class = "form-control", @placeholder = "Vehicle owner name" })
+                        </div>
+                        <div class="form-group">
+                            <label>Vehicle Number</label>
+                            @Html.TextBoxFor(d => d.VehicleNumber, new { @class = "form-control", @placeholder = "Vehicle Number" })
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            @Html.TextBoxFor(d => d.Address, new { @class = "form-control", @placeholder = " Address" })
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            @Html.TextBoxFor(d => d.MobileNumber, new { @class = "form-control", @placeholder = "Mobile Number" })
+                        </div>
+                        <div class="form-group">
+                            <label>Email Id</label>
+                            @Html.TextBoxFor(d => d.EmailId, new { @class = "form-control", @placeholder = "Email Id" })
+                        </div>
+                        <div class="form-group">
+                            <label>Vehicle Model</label>
+                            @Html.TextBoxFor(d => d.VehicleModel, new { @class = "form-control", @placeholder = "Vehicle Model" })
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-lg-6">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Vehicle location</label>
+                            @Html.TextBoxFor(d => d.VehicleLocation, new { @class = "form-control", @placeholder = "vehicle location" })
+                        </div>
+                        <div class="form-group">
+                            <label>Service center choice</label>
+                            @Html.DropDownListFor(m => m.DealerId, Model.Dealers, new { @class = "form-control", @onchange = "GetDealerDetails(this);" })
+                        </div>
+                        <div class="form-group">
+                            <label>Service center number</label>
+                            @Html.TextBoxFor(d => d.ServiceCenterPhone, new { @id = "txtDealerNum", @class = "form-control", @placeholder = "Service center number", @readonly = "" })
+                        </div>
+                        <div class="form-group">
+                            <label>Service center Email Id</label>
+                            @Html.TextBoxFor(d => d.ServiceCenterEmail, new { @id = "txtDealerEmailId", @class = "form-control", @placeholder = "Service center Email Id", @readonly = "" })
+                        </div>
+                        <div class="form-group">
+                            <label>Service Type</label>
+                            @Html.TextAreaFor(d => d.Feedback, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-lg btn-success btn-block" value="Save" />
+                        </div>
+                    </fieldset>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

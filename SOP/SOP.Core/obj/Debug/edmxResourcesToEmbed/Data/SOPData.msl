@@ -22,11 +22,11 @@
           <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
           <ScalarProperty Name="SecretQuestion" ColumnName="SecretQuestion" />
           <ScalarProperty Name="SecretAnswer" ColumnName="SecretAnswer" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -19,6 +19,8 @@
     <link href="~/Content/main.css" rel="stylesheet" />
     <link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
     <link href="~/Scripts/datepicker/css/datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -38,18 +40,18 @@
                     <ul class="nav navbar-nav">
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        @if (role == 1|| role==2)
+                        @if (role == 1 || role == 2)
                         {
                             @Html.Partial("_AdminMenu")
                         }
                         @if (role == 3)
                         {
-                              @Html.Partial("_DealerMenu")
+                            @Html.Partial("_DealerMenu")
                         }
                         else
                         {
-                             @Html.Partial("_CustomerMenu")
-                        } 
+                            @Html.Partial("_CustomerMenu")
+                        }
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
@@ -92,8 +94,7 @@
     <!-- /#wrapper -->
 
     <!-- Core Scripts - Include with every page -->
-    <script src="~/Scripts/jquery-1.9.0.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+
     <script src="~/Scripts/jquery.metisMenu.js"></script>
     <!-- Page-Level Plugin Scripts - Blank -->
     <!-- SB Admin Scripts - Include with every page -->

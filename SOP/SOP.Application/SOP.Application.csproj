@@ -191,9 +191,10 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Dealer\NewDealer.cshtml" />
+    <Content Include="Views\Dealer\DealerDetails.cshtml" />
     <Content Include="Views\Dealer\Index.cshtml" />
-    <Content Include="Views\Customer\NewBooking.cshtml" />
+    <Content Include="Views\Customer\Booking.cshtml" />
+    <Content Include="Views\Customer\Feedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

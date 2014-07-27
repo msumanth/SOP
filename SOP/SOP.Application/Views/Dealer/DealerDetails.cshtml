@@ -1,0 +1,109 @@
+﻿@model  SOP.Core.Models.DealerModel
+
+@{
+    ViewBag.Title = "NewDealer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="login-panel panel panel-default" style="margin: 2% 0;">
+    <div class="panel-heading">
+        <h3 class="panel-title">Dealer Details</h3>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.UserId);
+            <div class="row">
+                <div class="col-lg-4">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Dealer Name</label>
+                            @Html.TextBoxFor(d => d.DealerName, new { @class = "form-control", @placeholder = "Dealer Name" })
+                        </div>
+                        <div class="form-group">
+                            <label>Dealer Location</label>
+                            @Html.TextBoxFor(d => d.DealerLocation, new { @class = "form-control", @placeholder = "Location" })
+                        </div>
+                        <div class="form-group">
+                            <label>Dealer Address</label>
+                            @Html.TextBoxFor(d => d.Address, new { @class = "form-control", @placeholder = " Address" })
+                        </div>
+                        <div class="form-group">
+                            <label>Workshop Phone Number</label>
+                            @Html.TextBoxFor(d => d.WorkShopNumber, new { @class = "form-control", @placeholder = "Workshop Phone Number" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Primary Contact Person Number</label>
+                            @Html.TextBoxFor(d => d.PrimaryContactPerson, new { @class = "form-control", @placeholder = "Primary Contact Person Number" })
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-lg-4">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Primary Contact Person Number</label>
+                            @Html.TextBoxFor(d => d.PrimaryContactNumber, new { @class = "form-control", @placeholder = "Primary Contact Person Number" })
+                        </div>
+                        <div class="form-group">
+                            <label>Secondary Contact Person Name</label>
+                            @Html.TextBoxFor(d => d.SecondaryContactPerson, new { @class = "form-control", @placeholder = "Secondary Contact Person Name" })
+                        </div>
+                        <div class="form-group">
+                            <label>Secondary Contact Person Number</label>
+                            @Html.TextBoxFor(d => d.SecondaryContactNumber, new { @class = "form-control", @placeholder = "Secondary Contact Person Number" })
+                        </div>
+                        <div class="form-group">
+                            <label>Workshop General Manager Name</label>
+                            @Html.TextBoxFor(d => d.WorkShopGeneralManager, new { @class = "form-control", @placeholder = "Workshop General Manager Name" })
+                        </div>
+                        <div class="form-group">
+                            <label>Workshop General Manager Number</label>
+                            @Html.TextBoxFor(d => d.WorkShopGeneralManagerNumber, new { @class = "form-control", @placeholder = "Workshop General Manager Number" })
+                        </div>
+
+                    </fieldset>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Workshop Coordinates</label>
+                        @Html.TextBoxFor(d => d.WorkshopCoordinates, new { @id = "txtlatlong", @class = "form-control", @placeholder = "Workshop Coordinates" })
+                    </div>
+                    <div class="form-group">
+                        <label>Workshop Coordinates</label>
+                        <div style="height: 300px; width: 100%;">
+                            <div id="map-canvas"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Save" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<style>
+    #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp" type="text/javascript"></script>
+<script type="text/javascript">
+    function initialize() {
+        var mapOptions = {
+            zoom: 10,
+            center: new google.maps.LatLng(12.876069959946506, 77.65502940863371)
+        };
+        var mapDiv = document.getElementById('map-canvas');
+        var map = new google.maps.Map(mapDiv, mapOptions);
+        google.maps.event.addListener(map, "click", function (e) {
+            var latLng = e.latLng;
+            $("#txtlatlong").val(latLng);
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
