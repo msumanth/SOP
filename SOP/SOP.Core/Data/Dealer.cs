@@ -29,8 +29,10 @@ namespace SOP.Core.Data
         public decimal PrimaryContactPersonNum { get; set; }
         public string SecondaryContactPersonName { get; set; }
         public Nullable<decimal> SecondaryContactPersonNum { get; set; }
+        public Nullable<int> UserId { get; set; }
     
         public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual SopUser SopUser { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Service> Services { get; set; }
         public virtual ICollection<Workshop> Workshops { get; set; }

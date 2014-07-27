@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOP.Core.Repositpory
 {
-    class BookingDao
+    public class BookingDao
     {
     }
 }

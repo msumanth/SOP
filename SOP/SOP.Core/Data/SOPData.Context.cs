@@ -28,6 +28,7 @@ namespace SOP.Core.Data
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<Dealer> Dealers { get; set; }
+        public DbSet<DealerAssociation> DealerAssociations { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<PaymentSummary> PaymentSummaries { get; set; }
         public DbSet<Role> Roles { get; set; }

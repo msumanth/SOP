@@ -83,7 +83,6 @@ namespace SOP.Application.ActionFilters
     {
         void IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
         {
-
             if (AuthUtil.IsAuthenticated)
             {
                 //var res = UserBL.CheckUser(CurrentUser.UserId);

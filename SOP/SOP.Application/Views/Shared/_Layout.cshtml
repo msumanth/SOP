@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    var role = (int)TempData["Role"];
 }
 
 <!DOCTYPE html>
@@ -16,52 +17,58 @@
     <link href="~/Content/sb-admin.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/main.css" rel="stylesheet" />
-
+    <link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/datepicker/css/datepicker.css" rel="stylesheet" />
 </head>
 <body>
 
     <div id="wrapper">
-
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Service It Online Portal</a>
-            </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+        <nav class="navbar navbar-fixed-top startbootstrap-nav" role="navigation">
+            <div class="container-layout">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" style="margin-left: 10%;">ServiceIt Online Portal</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (role == 1|| role==2)
+                        {
+                            @Html.Partial("_AdminMenu")
+                        }
+                        @if (role == 3)
+                        {
+                              @Html.Partial("_DealerMenu")
+                        }
+                        else
+                        {
+                             @Html.Partial("_CustomerMenu")
+                        } 
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="/Account/Logout"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                                </li>
+                            </ul>
+                            <!-- /.dropdown-user -->
                         </li>
                     </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default navbar-static-side" role="navigation">
-                <div class="sidebar-collapse">
-                    @Html.Partial("_AdminMenu")
                 </div>
             </div>
+            <!-- /.container -->
         </nav>
-
-        <div id="page-wrapper">
+        <div class="div-page-layout">
             <div class="row">
                 <div class="col-lg-12">
                     @RenderBody()
@@ -70,8 +77,17 @@
             </div>
             <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
-
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>
+                            <span class="pull-left">© 2014 <a href="#" title="ServiceIt" target="_blank">ServiceIt </a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <!-- /#wrapper -->
 
@@ -82,8 +98,19 @@
     <!-- Page-Level Plugin Scripts - Blank -->
     <!-- SB Admin Scripts - Include with every page -->
     <script src="~/Scripts/sb-admin.js"></script>
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap.js"></script>
     <!-- Page-Level Demo Scripts - Blank - Use for reference -->
-
+    <script>
+        $(document).ready(function () {
+            $('.dtable').dataTable();
+            $('.datepicker').datepicker().on('changeDate', function (ev) {
+                $('#dpDob').val(ev.date.toLocaleDateString());
+                $('.datepicker').datepicker('hide');
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -26,6 +26,7 @@
           <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -49,6 +50,16 @@
           <ScalarProperty Name="PrimaryContactPersonNum" ColumnName="PrimaryContactPersonNum" />
           <ScalarProperty Name="SecondaryContactPersonName" ColumnName="SecondaryContactPersonName" />
           <ScalarProperty Name="SecondaryContactPersonNum" ColumnName="SecondaryContactPersonNum" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DealerAssociations">
+      <EntityTypeMapping TypeName="SOPModel.DealerAssociation">
+        <MappingFragment StoreEntitySet="DealerAssociations">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -127,6 +138,8 @@
           <ScalarProperty Name="Mobile" ColumnName="Mobile" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="SecretQuestionId" ColumnName="SecretQuestionId" />
+          <ScalarProperty Name="SecretAnswer" ColumnName="SecretAnswer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

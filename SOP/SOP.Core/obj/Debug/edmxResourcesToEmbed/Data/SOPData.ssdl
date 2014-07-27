@@ -4,6 +4,7 @@
     <EntitySet Name="Booking" EntityType="SOPModel.Store.Booking" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Coupon" EntityType="SOPModel.Store.Coupon" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Dealer" EntityType="SOPModel.Store.Dealer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DealerAssociations" EntityType="SOPModel.Store.DealerAssociations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Feedback" EntityType="SOPModel.Store.Feedback" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PaymentSummary" EntityType="SOPModel.Store.PaymentSummary" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Roles" EntityType="SOPModel.Store.Roles" store:Type="Tables" Schema="dbo" />
@@ -25,6 +26,10 @@
     <AssociationSet Name="FK_Booking_ServiceType" Association="SOPModel.Store.FK_Booking_ServiceType">
       <End Role="ServiceType" EntitySet="ServiceType" />
       <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dealer_SopUser" Association="SOPModel.Store.FK_Dealer_SopUser">
+      <End Role="SopUser" EntitySet="SopUser" />
+      <End Role="Dealer" EntitySet="Dealer" />
     </AssociationSet>
     <AssociationSet Name="FK_Feedback_Booking" Association="SOPModel.Store.FK_Feedback_Booking">
       <End Role="Booking" EntitySet="Booking" />
@@ -52,6 +57,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_SopUser_Roles" Association="SOPModel.Store.FK_SopUser_Roles">
       <End Role="Roles" EntitySet="Roles" />
+      <End Role="SopUser" EntitySet="SopUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SopUser_SecretQuestions" Association="SOPModel.Store.FK_SopUser_SecretQuestions">
+      <End Role="SecretQuestions" EntitySet="SecretQuestions" />
       <End Role="SopUser" EntitySet="SopUser" />
     </AssociationSet>
     <AssociationSet Name="FK_Workshop_Dealer" Association="SOPModel.Store.FK_Workshop_Dealer">
@@ -85,6 +94,7 @@
     <Property Name="LastModifiedBy" Type="int" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Coupon">
     <Key>
@@ -106,6 +116,15 @@
     <Property Name="PrimaryContactPersonNum" Type="numeric" Nullable="false" />
     <Property Name="SecondaryContactPersonName" Type="nvarchar" MaxLength="200" />
     <Property Name="SecondaryContactPersonNum" Type="numeric" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="DealerAssociations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DealerId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="Feedback">
     <Key>
@@ -177,6 +196,8 @@
     <Property Name="Mobile" Type="numeric" Nullable="false" />
     <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="200" />
     <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="SecretQuestionId" Type="int" Nullable="false" />
+    <Property Name="SecretAnswer" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="SubscriptionPackage">
     <Key>
@@ -241,6 +262,18 @@
       </Principal>
       <Dependent Role="Booking">
         <PropertyRef Name="ServiceType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dealer_SopUser">
+    <End Role="SopUser" Type="SOPModel.Store.SopUser" Multiplicity="0..1" />
+    <End Role="Dealer" Type="SOPModel.Store.Dealer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SopUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dealer">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -325,6 +358,18 @@
       </Principal>
       <Dependent Role="SopUser">
         <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SopUser_SecretQuestions">
+    <End Role="SecretQuestions" Type="SOPModel.Store.SecretQuestions" Multiplicity="1" />
+    <End Role="SopUser" Type="SOPModel.Store.SopUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecretQuestions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SopUser">
+        <PropertyRef Name="SecretQuestionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

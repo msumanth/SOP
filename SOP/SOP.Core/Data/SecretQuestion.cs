@@ -17,11 +17,13 @@ namespace SOP.Core.Data
         public SecretQuestion()
         {
             this.Bookings = new HashSet<Booking>();
+            this.SopUsers = new HashSet<SopUser>();
         }
     
         public int Id { get; set; }
         public string Question { get; set; }
     
         public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<SopUser> SopUsers { get; set; }
     }
 }

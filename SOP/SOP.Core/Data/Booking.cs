@@ -41,6 +41,7 @@ namespace SOP.Core.Data
         public Nullable<int> LastModifiedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> LastModifiedDate { get; set; }
+        public int UserId { get; set; }
     
         public virtual Dealer Dealer { get; set; }
         public virtual SecretQuestion SecretQuestion1 { get; set; }

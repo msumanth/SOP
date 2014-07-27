@@ -16,6 +16,7 @@ namespace SOP.Core.Data
     {
         public SopUser()
         {
+            this.Dealers = new HashSet<Dealer>();
             this.Feedbacks = new HashSet<Feedback>();
         }
     
@@ -29,8 +30,12 @@ namespace SOP.Core.Data
         public decimal Mobile { get; set; }
         public string Password { get; set; }
         public int RoleId { get; set; }
+        public int SecretQuestionId { get; set; }
+        public string SecretAnswer { get; set; }
     
+        public virtual ICollection<Dealer> Dealers { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual Role Role { get; set; }
+        public virtual SecretQuestion SecretQuestion { get; set; }
     }
 }

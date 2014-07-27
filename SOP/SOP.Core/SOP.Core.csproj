@@ -69,6 +69,9 @@
     <Compile Include="Data\Dealer.cs">
       <DependentUpon>SOPData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\DealerAssociation.cs">
+      <DependentUpon>SOPData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Feedback.cs">
       <DependentUpon>SOPData.tt</DependentUpon>
     </Compile>
@@ -114,22 +117,25 @@
     <Compile Include="Data\Workshop.cs">
       <DependentUpon>SOPData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookingModel.cs" />
+    <Compile Include="Models\CustomPrinciple.cs" />
+    <Compile Include="Models\DealerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositpory\BookingDao.cs" />
+    <Compile Include="Repositpory\DbRepository.cs" />
     <Compile Include="Repositpory\DealerDao.cs" />
     <Compile Include="Repositpory\UserDao.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Util\AuthUtil.cs" />
     <Compile Include="Util\SymmetricEncryption.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Data\SOPData.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SOPData.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="Data\SOPData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SOPData.edmx</DependentUpon>

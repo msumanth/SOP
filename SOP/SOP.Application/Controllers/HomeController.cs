@@ -1,4 +1,5 @@
-﻿using SOP.Application.Models;
+﻿using SOP.Application.ActionFilters;
+using SOP.Application.Models;
 using SOP.Core.Util;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,18 @@ namespace SOP.Application.Controllers
     {
         //
         // GET: /Home/
-
-        public ActionResult Index()
+        [ClearCache]
+        [AllowAnonymous]
+        public ActionResult Index(string msg = "")
         {
             var model = new LoginModel();
+            model.Errormsg = msg;
             return View(model);
+        }
+
+        public ActionResult Error()
+        {
+            return View();
         }
 
         public ActionResult SubAdminCreation()
@@ -35,7 +43,6 @@ namespace SOP.Application.Controllers
             }
             return View(model);
         }
-
 
         public ActionResult DealerCreation()
         {
